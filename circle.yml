@@ -2,14 +2,14 @@ dependencies:
     pre:
         - curl -L https://github.com/commercialhaskell/stack/releases/download/v1.6.3/stack-1.6.3-linux-x86_64-static.tar.gz | tar zx -C /tmp
         - sudo mv /tmp/stack-1.6.3-linux-x86_64-static/stack /usr/local/bin
- 
+
     override:
         - stack build --install-ghc --only-dependencies
-        
+
     cache_directories:
         - "~/.stack"
         - ".stack-work"
-        
+
 compile:
     override:
         - stack install --ghc-options=-j2
@@ -18,3 +18,7 @@ compile:
 test:
     override:
         - echo "nothing to do"
+notify:
+    webhooks:
+        # A list of hook hashes, containing the URL field
+        - url: https://discordapp.com/api/webhooks/410038177861074945/JvR2hoQxltQUHv3jXMKDuqEWfRaoDB4NQH-ruaPUvr2tNthUd_E-KxHYnWUH3xTFOHa0
